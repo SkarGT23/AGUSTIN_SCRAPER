@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Inteligencia Artificial</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7fafd; margin:0; padding:0; }
+        .container { max-width: 1200px; margin: 2em auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 18px rgba(0,0,0,0.09); padding: 32px; }
+        h2 { color: #0a2540; text-align:center; }
+        .cards { display:flex; gap:2em; justify-content:space-between; margin-top:2em; }
+        .card { flex:1; background:#f7fafd; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.04); padding: 24px 18px; }
+        .card h3 { color:#0a2540; margin-bottom:1em; }
+        .recomendaciones-list { list-style:none; padding:0; }
+        .recomendaciones-list li { background:#e6f8e2; margin-bottom:10px; border-radius:7px; padding:8px 12px; }
+        .tendencias-graph { width:100%; max-width:420px; height:260px; background:#fff; border-radius:10px; border:1px solid #e0e6ed; display:flex; align-items:center; justify-content:center; }
+    </style>
+</head>
+<body style="padding-top:64px;">
+    <div style="position:fixed; top:0; left:0; width:100vw; background:#fff; box-shadow:0 2px 16px rgba(0,0,0,0.07); z-index:1000; display:flex; gap:16px; align-items:center; justify-content:flex-start; padding:10px 28px; min-height:48px;">
+        <a href="/dashboard/" style="background:#2d7be5; color:#fff; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">IA</a>
+        <a href="/analisis/" style="background:#2db57b; color:#fff; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">Análisis</a>
+        <a href="/" style="background:#eee; color:#0a2540; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">Inicio</a>
+        {% if user.is_authenticated %}
+            <a href="/logout/" style="background:#e94f4f; color:#fff; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">Cerrar sesión</a>
+        {% endif %}
+    </div>
+    <div class="container">
+        <h2>Panel Inteligente de Recomendaciones y Tendencias</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>Recomendaciones de ofertas para ti</h3>
+                {% if recomendaciones %}
+                    <ul class="recomendaciones-list">
+                        {% for oferta in recomendaciones %}
+                            <li><b>{{ oferta.titulo }}</b> en {{ oferta.empresa }} ({{ oferta.portal }})</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No hay recomendaciones disponibles.</p>
+                {% endif %}
+            </div>
+            <div class="card">
+                <h3>Tendencias de habilidades</h3>
+                {% if tendencias %}
+                    <div class="tendencias-graph">
+                        <!-- Aquí se puede insertar un gráfico generado como imagen base64 -->
+                        <img src="data:image/png;base64,{{ tendencias }}" style="max-width:100%; max-height:240px;" />
+                    </div>
+                {% else %}
+                    <p>No hay datos de tendencias.</p>
+                {% endif %}
+            </div>
+        </div>
+        </div>
+        <!-- Zona de consulta directa a la IA -->
+        <div style="margin-top:4em; padding:2.5em 0 0 0; border-top:1px solid #e0e6ed;">
+            <h3 style="color:#0a2540; text-align:center;">Hola, soy AGUSTIN, tu asistente virtual obsesionado con el empleo</h3>
+            <form method="post" style="display:flex; justify-content:center; gap:10px; margin-top:1.7em;" autocomplete="off">
+                {% csrf_token %}
+                <input type="text" name="pregunta_ia" placeholder="¿Sobre qué tendencia, habilidad o empleo quieres preguntar?" style="flex:1; max-width:420px; border-radius:7px; border:1px solid #ccc; padding:10px 14px; font-size:1.1em;">
+                <button type="submit" style="background:#2d7be5; color:#fff; border:none; border-radius:7px; padding:10px 22px; font-weight:bold; font-size:1.1em; cursor:pointer;">Preguntar</button>
+            </form>
+            <div style="margin-bottom:2.5em;"></div>
+            {% if respuesta_ia %}
+            <div style="margin:4em auto 0 auto; max-width:640px; background:#e6f2fd; border-radius:12px; padding:22px 30px; box-shadow:0 2px 12px rgba(45,123,229,0.08); color:#0a2540; display:flex; align-items:flex-start; gap:13px; font-size:1.13em;">
+                <span style="font-size:1.6em; color:#2d7be5; margin-top:2px;">🤖</span>
+                <div><b>Respuesta de la IA:</b><br>{{ respuesta_ia }}</div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

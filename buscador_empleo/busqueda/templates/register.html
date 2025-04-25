@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro</title>
+</head>
+<body>
+<<<<<<< HEAD
+=======
+    <div style="position:fixed; top:20px; right:30px; z-index:1000; display:flex; gap:12px;">
+        <a href="/calendario/" style="background:#5ec6fa; color:#fff; border-radius:7px; padding:10px 16px; text-decoration:none; font-weight:bold;">Calendario</a>
+        <a href="/perfil/" style="background:#0a2540; color:#fff; border-radius:7px; padding:10px 16px; text-decoration:none; font-weight:bold;">Perfil</a>
+        <a href="/" style="background:#eee; color:#0a2540; border-radius:7px; padding:10px 16px; text-decoration:none; font-weight:bold;">Inicio</a>
+    </div>
+>>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
+<h2>Crear cuenta</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Registrarse</button>
+</form>
+<p>¿Ya tienes cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+</body>
+</html>

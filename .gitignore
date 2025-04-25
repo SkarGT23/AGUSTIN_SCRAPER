@@ -1,0 +1,33 @@
+# Entorno virtual de Python
+venv/
+.env/
+ENV/
+.venv/
+
+# Archivos de PyInstaller
+*.spec
+dist/
+build/
+__pycache__/
+
+# Archivos temporales y de sistema
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de usuario
+*.vscode/
+.idea/
+*.swp
+
+# Archivos de logs
+*.log
+
+# Otros
+*.bak
+*.orig
+*.tmp

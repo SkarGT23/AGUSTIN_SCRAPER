@@ -1,0 +1,5 @@
+Para generar el ejecutable con el icono personalizado de AGUSTIN (cara de robot), usa este comando desde la carpeta correspondiente:
+
+python -m PyInstaller --onefile --windowed --icon AGUSTIN.ico --name AGUSTIN busqueda_app_desktop.py
+
+# Esto generará un ejecutable 'AGUSTIN.exe' con el icono de robot en la carpeta dist/.

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Perfil</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f7fafd; margin:0; padding:0; }
+        .container { max-width: 500px; margin: 2em auto; background: #fff; border-radius: 12px; box-shadow: 0 4px 18px rgba(0,0,0,0.09); padding: 32px; }
+        h2 { color: #0a2540; text-align:center; }
+        label { display:block; margin-top:1.2em; font-weight:600; color:#0a2540; }
+        input[type=text], input[type=email], input[type=password] { width:100%; padding:10px; border-radius:7px; border:1px solid #e0e6ed; margin-top:6px; font-size:1em; background:#f7fafd; }
+        .btn-save { margin-top:2em; background:#5ec6fa; color:#fff; font-weight:bold; border:none; border-radius:7px; padding:12px 26px; }
+        .back-btn { margin-top:1.5em; display:inline-block; background:#111; color:#fff; font-weight:bold; border:none; border-radius:7px; padding:10px 22px; text-decoration:none; }
+    </style>
+</head>
+<body>
+    <div style="position:fixed; top:20px; right:30px; z-index:1000; display:flex; gap:12px;">
+        <a href="/calendario/" style="background:#5ec6fa; color:#fff; border-radius:7px; padding:10px 16px; text-decoration:none; font-weight:bold;">Calendario</a>
+        <a href="/perfil/" style="background:#0a2540; color:#fff; border-radius:7px; padding:10px 16px; text-decoration:none; font-weight:bold;">Perfil</a>
+        <a href="/" style="background:#eee; color:#0a2540; border-radius:7px; padding:10px 16px; text-decoration:none; font-weight:bold;">Inicio</a>
+    </div>
+    <div class="container">
+        <h2>Mi Perfil</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="nombre">Nombre de usuario:</label>
+            <input type="text" id="nombre" name="nombre" value="{{ user.username }}">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}">
+            <label for="password">Nueva contraseña:</label>
+            <input type="password" id="password" name="password" placeholder="Dejar en blanco para no cambiar">
+            <div style="text-align:center;">
+                <button type="submit" class="btn-save">Guardar Cambios</button>
+            </div>
+        </form>
+        <div style="text-align:center; margin-top:2em;">
+            <a href="/" class="back-btn">Volver al inicio</a>
+        </div>
+    </div>
+</body>
+</html>

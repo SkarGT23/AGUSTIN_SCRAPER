@@ -1,0 +1,6 @@
+Para generar el ejecutable con icono personalizado, usa este comando:
+
+python -m PyInstaller --onefile --windowed --icon app_empleo.ico busqueda_app_desktop.py
+
+# Asegúrate de que 'app_empleo.ico' está en la misma carpeta que 'busqueda_app_desktop.py'.
+# El ejecutable generado tendrá el icono personalizado.
