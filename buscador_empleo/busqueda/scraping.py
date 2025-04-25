@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -98,7 +98,7 @@ def obtener_ofertas_linkedin(palabra_clave='python', ubicacion='España', puesto
 
     driver.quit()
     return ofertas
-=======
+
 from .scraping_linkedin import obtener_ofertas_linkedin
 from .scraping_infojobs import obtener_ofertas_infojobs
 from .scraping_tecnoempleo import obtener_ofertas_tecnoempleo_alternativo
@@ -159,4 +159,4 @@ if __name__ == '__main__':
         print(f"👉 {oferta['url_oferta']}")
         print('-' * 80)
 
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
+

@@ -1,19 +1,13 @@
-
-
-# Create your models here.
 from django.db import models
-<<<<<<< HEAD
-=======
 from django.contrib.auth.models import User
 
 class NotaPersonal(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha = models.DateField()
     texto = models.TextField()
-    
+
     def __str__(self):
-        return f"Nota de {self.usuario.username} para {self.fecha}" 
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
+        return f"Nota de {self.usuario.username} para {self.fecha}"
 
 class Habilidad(models.Model):
     nombre = models.CharField(max_length=100)
@@ -35,8 +29,6 @@ class OfertaLaboral(models.Model):
     def __str__(self):
         return self.titulo
 
-<<<<<<< HEAD
-=======
 class InscripcionOferta(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE)
     oferta = models.ForeignKey(OfertaLaboral, on_delete=models.CASCADE)
@@ -55,5 +47,3 @@ class DatoMercado(models.Model):
 
     def __str__(self):
         return f"{self.habilidad} ({self.region}, {self.industria}) - {self.fecha}"
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
-

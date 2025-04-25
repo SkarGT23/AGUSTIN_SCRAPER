@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-<<<<<<< HEAD
+
 
 from .scraping import obtener_ofertas_infojobs, obtener_ofertas_tecnoempleo, obtener_ofertas_linkedin
 from .models import OfertaLaboral
-=======
+
 from django.contrib.auth import logout
 
 from .scraping_linkedin import obtener_ofertas_linkedin
@@ -230,7 +230,7 @@ def analisis_mercado(request):
         'grafico_portales': grafico_portales,
         'grafico_inscripciones': grafico_inscripciones
     })
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
+
 
 # Vista de registro de usuario
 def register(request):
@@ -239,11 +239,11 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-<<<<<<< HEAD
-            return redirect('buscar')
-=======
+
             return redirect('buscar_todos')
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
+
+            return redirect('buscar_todos')
+
     else:
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
@@ -256,16 +256,16 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user:
             login(request, user)
-<<<<<<< HEAD
-            return redirect('buscar')
-=======
+
             return redirect('buscar_todos')
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
+
+            return redirect('buscar_todos')
+
         else:
             return render(request, 'login.html', {'error': 'Credenciales incorrectas'})
     return render(request, 'login.html')
 
-<<<<<<< HEAD
+
 # Vista de búsqueda de empleo
 @login_required
 def buscar_empleo(request):
@@ -288,7 +288,6 @@ def buscar_empleo(request):
         # Renderizamos los resultados
         return render(request, 'resultados.html', {'ofertas': todas})
     
-=======
 # Vista para cerrar sesión
 @login_required
 def logout_view(request):
@@ -416,18 +415,13 @@ def buscar_todos(request):
         if todas:
             print(f"[DEBUG] Primera oferta global: {todas[0]}")
         return render(request, 'resultados.html', {'ofertas': todas, 'portal': 'Todos'})
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
+
     return render(request, 'buscar.html')
 
 # Buscar ofertas en la base de datos
 def buscar_ofertas(request):
     ofertas = OfertaLaboral.objects.all()  # Obtiene todas las ofertas desde la base de datos
     return render(request, 'buscar.html', {'ofertas': ofertas})
-<<<<<<< HEAD
-=======
-
-
 
 def home(request):
     return render(request, 'home.html')
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)

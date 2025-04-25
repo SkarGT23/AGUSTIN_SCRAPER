@@ -6,7 +6,7 @@
     <title>Buscar empleo</title>
     <style>
         body {
-<<<<<<< HEAD
+
             font-family: Arial, sans-serif;
             margin: 40px;
         }
@@ -23,7 +23,7 @@
             display: block;
             margin-top: 10px;
             font-weight: bold;
-=======
+
             font-family: 'Segoe UI', Arial, sans-serif;
             background: #f7fafd;
             margin: 0;
@@ -48,12 +48,12 @@
             margin-top: 16px;
             font-weight: 600;
             color: #0a2540;
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
+
         }
         input[type="text"],
         input[type="number"] {
             width: 100%;
-<<<<<<< HEAD
+
             padding: 8px;
             margin-top: 4px;
             box-sizing: border-box;
@@ -69,7 +69,7 @@
         }
         button:hover {
             background-color: #45a049;
-=======
+
             padding: 10px;
             margin-top: 6px;
             border: 1px solid #e0e6ed;
@@ -145,95 +145,46 @@
         }
         .btn-todos:hover {
             background: #444;
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
+
         }
     </style>
 </head>
-<body>
-<<<<<<< HEAD
-
-<h2>Buscar Ofertas de Empleo</h2>
-
-<form method="POST">
-    {% csrf_token %}
-    
-    <label>Palabra clave:</label>
-    <input type="text" name="palabra" placeholder="Ej: Python, Java, etc">
-
-    <label>Ubicación:</label>
-    <input type="text" name="ubicacion" placeholder="Ej: Madrid, Barcelona">
-
-    <label>Puesto de trabajo:</label>
-    <input type="text" name="puesto" placeholder="Ej: Desarrollador Backend, QA, etc">
-
-    <label>Empresa:</label>
-    <input type="text" name="empresa" placeholder="Ej: Google, Indra, etc">
-
-    <label>Salario mínimo (€/año):</label>
-    <input type="number" name="salario" placeholder="Ej: 30000">
-
-    <label>Tecnología utilizada:</label>
-    <input type="text" name="tecnologia" placeholder="Ej: Django, React, etc">
-
-    <button type="submit">Buscar</button>
-=======
-    <div style="position:fixed; top:20px; right:30px; z-index:1000; display:flex; gap:12px;">
-        <a href="/perfil/" style="background:#0a2540; color:#fff; border-radius:7px; padding:10px 16px; text-decoration:none; font-weight:bold;">Perfil</a>
-        <a href="/" style="background:#eee; color:#0a2540; border-radius:7px; padding:10px 16px; text-decoration:none; font-weight:bold;">Inicio</a>
+<body style="padding-top:64px;">
+    <div style="position:fixed; top:0; left:0; width:100vw; background:#fff; box-shadow:0 2px 16px rgba(0,0,0,0.07); z-index:1000; display:flex; gap:16px; align-items:center; justify-content:flex-start; padding:10px 28px; min-height:48px;">
+        <a href="/dashboard/" style="background:#2d7be5; color:#fff; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">IA</a>
+        <a href="/analisis/" style="background:#2db57b; color:#fff; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">Análisis</a>
+        <a href="/calendario/" style="background:#f7b731; color:#fff; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">Calendario</a>
+        <a href="/perfil/" style="background:#0a2540; color:#fff; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">Perfil</a>
+        <a href="/" style="background:#eee; color:#0a2540; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">Inicio</a>
         {% if user.is_authenticated %}
-            <a href="/logout/" style="background:#e94f4f; color:#fff; border-radius:7px; padding:10px 16px; text-decoration:none; font-weight:bold;">Cerrar sesión</a>
+            <a href="/logout/" style="background:#e94f4f; color:#fff; border-radius:7px; padding:7px 18px; text-decoration:none; font-weight:bold; font-size:1em;">Cerrar sesión</a>
         {% endif %}
-    </div>
-    <h2>Buscar Ofertas de Empleo</h2>
-    <div style="display:flex; gap:18px; justify-content:center; margin-bottom:24px; margin-top:8px;">
-        <a href="/dashboard/" style="background:#2d7be5; color:#fff; border-radius:7px; padding:12px 28px; text-decoration:none; font-weight:bold; font-size:1.12em;">IA</a>
-        <a href="/analisis/" style="background:#2db57b; color:#fff; border-radius:7px; padding:12px 28px; text-decoration:none; font-weight:bold; font-size:1.12em;">Análisis</a>
-        <a href="/calendario/" style="background:#f7b731; color:#fff; border-radius:7px; padding:12px 28px; text-decoration:none; font-weight:bold; font-size:1.12em;">Calendario</a>
-    </div>
 
+    </div>
     <form method="POST" style="margin-bottom: 2em;">
         {% csrf_token %}
-        
         <label>Palabra clave:</label>
         <input type="text" name="palabra" placeholder="Ej: Python, Java, etc">
-
         <label>Ubicación:</label>
         <input type="text" name="ubicacion" placeholder="Ej: Madrid, Barcelona">
-
         <label>Puesto de trabajo:</label>
         <input type="text" name="puesto" placeholder="Ej: Desarrollador Backend, QA, etc">
-
         <label>Salario mínimo (€/año):</label>
         <input type="number" name="salario" placeholder="Ej: 30000">
-
         <label>Tecnología utilizada:</label>
         <input type="text" name="tecnologia" placeholder="Ej: Django, React, etc">
-
         <label>Número de ofertas a mostrar:</label>
         <input type="number" name="num_ofertas" placeholder="Ej: 5" min="1">
-
-
-    <div class="button-row">
-    <button type="submit" formaction="/buscar/linkedin/" class="btn-linkedin">LinkedIn</button>
-    <button type="submit" formaction="/buscar/infojobs/" class="btn-infojobs">InfoJobs</button>
-    <button type="submit" formaction="/buscar/tecnoempleo/" class="btn-tecnoempleo">Tecnoempleo</button>
-    <button type="submit" formaction="/buscar/todos/" class="btn-todos">Todos los portales</button>
+        <div class="button-row">
+            <button type="submit" formaction="/buscar/linkedin/" class="btn-linkedin">LinkedIn</button>
+            <button type="submit" formaction="/buscar/infojobs/" class="btn-infojobs">InfoJobs</button>
+            <button type="submit" formaction="/buscar/tecnoempleo/" class="btn-tecnoempleo">Tecnoempleo</button>
+            <button type="submit" formaction="/buscar/todos/" class="btn-todos">Todos los portales</button>
+        </div>
+    </form>
 </div>
->>>>>>> 70c3a41 (Añadir .gitignore para entorno virtual, archivos temporales y configuración de usuario)
-</form>
 
 </body>
 </html>
 
 <!-- buscar.html -->
-{% for oferta in ofertas %}
-    <div>
-        <h3>{{ oferta.titulo }}</h3>
-        <p><strong>Empresa:</strong> {{ oferta.empresa }}</p>
-        <p><strong>Ubicación:</strong> {{ oferta.ubicacion }}</p>
-        <p><strong>Fecha de publicación:</strong> {{ oferta.fecha_publicacion }}</p>
-        <p><strong>Salario:</strong> {{ oferta.salario }}</p>
-        <p><strong>Portal:</strong> {{ oferta.portal }}</p>  <!-- Aquí mostramos el portal -->
-        <a href="{{ oferta.url_oferta }}" target="_blank">Ver oferta completa</a>
-    </div>
-{% endfor %}
